@@ -1,0 +1,18 @@
+version: '3'
+services:
+  redpanda:
+    image: vectorized/redpanda:latest
+    networks:
+      - broker-redpanda
+    ports:
+      - 9092:9092
+
+networks: 
+  broker-redpanda:
+    driver: bridge
+
+# Before use it
+# To set the aio-max-nr value, add the following line to the /etc/sysctl.conf file:
+# fs.aio-max-nr = 1048576
+#To activate the new setting, run the following command:
+# sysctl -p /etc/sysctl.conf
